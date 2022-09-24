@@ -1,5 +1,7 @@
 package personnages;
 
+import java.util.Random;
+
 public class Personnage {
 
     // **************************************************************************
@@ -12,6 +14,7 @@ public class Personnage {
     private int valeurMaxAttaque;
     private int valeurDefense;
     private int initiative;
+    private int attaque;
     // </editor-fold>
 
     // **************************************************************************
@@ -34,6 +37,7 @@ public class Personnage {
         valeurMaxAttaque = 0;
         valeurDefense = 0;
         initiative = 0;
+        attaque = 0;
     }
     // </editor-fold>
     
@@ -62,6 +66,11 @@ public class Personnage {
     public int getInitiative() {
         return initiative;
     }
+
+    public int getAttaque() {
+        return attaque;
+    }
+    
     
     // TODO : Les setters
 
@@ -84,6 +93,11 @@ public class Personnage {
     public void setInitiative(int initiative) {
         this.initiative = initiative;
     }
+
+    public void setAttaque(int attaque) {
+        this.attaque = attaque;
+    }
+    
     
     // </editor-fold>
 
@@ -116,7 +130,15 @@ public class Personnage {
     private int attaqueCalcul() {
         // TODO : Retourner la valeur de l'attaque du personnage.
         // Cette valeur est trouvée aléatoirement et doit se situer entre ZÉRO et valeurMaxAttaque.
-        return 0;
+        
+        Random rand = new Random();
+        int minValue = 0;
+        int maxValue = valeurMaxAttaque + 1;
+        int nombreAleatoire = rand.nextInt(maxValue - minValue) + minValue;
+        
+        setAttaque(nombreAleatoire);
+       
+        return attaque;
     }
 
     public void frapperPersonnage(Personnage personnageCible) {
