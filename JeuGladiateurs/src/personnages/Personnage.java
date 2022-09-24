@@ -15,6 +15,7 @@ public class Personnage {
     private int valeurDefense;
     private int initiative;
     private int attaque;
+    private int dommages;
     // </editor-fold>
 
     // **************************************************************************
@@ -38,6 +39,8 @@ public class Personnage {
         valeurDefense = 0;
         initiative = 0;
         attaque = 0;
+        dommages = 0;
+        
     }
     // </editor-fold>
     
@@ -70,7 +73,10 @@ public class Personnage {
     public int getAttaque() {
         return attaque;
     }
-    
+
+    public int getDommages() {
+        return dommages;
+    }
     
     // TODO : Les setters
 
@@ -97,7 +103,10 @@ public class Personnage {
     public void setAttaque(int attaque) {
         this.attaque = attaque;
     }
-    
+
+    public void setDommages(int dommages) {
+        this.dommages = dommages;
+    }
     
     // </editor-fold>
 
@@ -145,6 +154,28 @@ public class Personnage {
         // TODO : Récupérer la valeur d'attaque pour ce tour, calculer les dégats,
         //modifier les points de vie du personnage cible, afficher les détails
         // sur l'attaque, tel que montré dans l'énoncé.
+        
+        attaque = attaqueCalcul();
+        
+        dommages = attaque - personnageCible.getValeurDefense();
+        
+        dommages = dommages >= 0 ? dommages : 0;
+        
+        personnageCible.setPointsDeVie(personnageCible.getPointsDeVie() - dommages);
+        
+        if (personnageCible.getPointsDeVie() <= 0) {
+            
+            personnageCible.setPointsDeVie(0);
+            
+        }
+        
+        
+        System.out.println();
+        System.out.println(nom + " attaque avec une puissance de: " + attaque);
+        System.out.println(personnageCible.getNom() + " a une defense de: " + personnageCible.getValeurDefense());
+        System.out.println("Les dommages sont donc de: " + dommages);
+        System.out.println();
+        
     }
 
     public void setNewInitiativeRandom() {
