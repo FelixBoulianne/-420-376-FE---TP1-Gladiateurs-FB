@@ -13,6 +13,9 @@ public class Retiaire extends Personnage {
     public void Retiaire(){
     classe = "Retiaire";
     maxIni = 100;
- }
+    filet = true;
+    success = false;
     
+ }
+   
 }

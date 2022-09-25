@@ -18,6 +18,8 @@ public class Personnage {
     private int dommages;
     protected String classe;
     protected int maxIni;
+    protected boolean filet;
+    protected boolean success;
     // </editor-fold>
 
     // **************************************************************************
@@ -45,7 +47,8 @@ public class Personnage {
         dommages = 0;
         classe = "";
         maxIni = 0;
-        
+        //filet = true;
+        //success = false;
     }
     
     // </editor-fold>
@@ -91,6 +94,14 @@ public class Personnage {
     public int getMaxIni() {
         return maxIni;
     }
+
+    public boolean isFilet() {
+        return filet;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
     
     
     
@@ -131,6 +142,15 @@ public class Personnage {
     public void setMaxIni(int maxIni) {
         this.maxIni = maxIni;
     }
+
+    public void setFilet(boolean filet) {
+        this.filet = filet;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+    
     
     
     
@@ -196,12 +216,22 @@ public class Personnage {
             
         }
         
+        if (filet == false || classe == "Retiaire") {
+            System.out.println();
+            System.out.println(nom + " ramasse son filet et en profite pour attaquer de : " + attaque);
+            System.out.println(personnageCible.getNom() + " a une defense de: " + personnageCible.getValeurDefense());
+            System.out.println("Les dommages sont donc de: " + dommages);
+            System.out.println();
+            filet = true;
+        }
         
-        System.out.println();
-        System.out.println(nom + " attaque avec une puissance de: " + attaque);
-        System.out.println(personnageCible.getNom() + " a une defense de: " + personnageCible.getValeurDefense());
-        System.out.println("Les dommages sont donc de: " + dommages);
-        System.out.println();
+        else{
+            System.out.println();
+            System.out.println(nom + " attaque avec une puissance de: " + attaque);
+            System.out.println(personnageCible.getNom() + " a une defense de: " + personnageCible.getValeurDefense());
+            System.out.println("Les dommages sont donc de: " + dommages);
+            System.out.println();
+        }
         
     }
 
@@ -216,5 +246,22 @@ public class Personnage {
         setInitiative(nombreAleatoire);
         
     }
-    // </editor-fold>
+    
+    public void success(){
+        
+        Random rand = new Random();
+        int minValue = 0;
+        int maxValue = 100 + 1;
+        int nombreAleatoire = rand.nextInt(maxValue - minValue) + minValue;
+        
+        if (nombreAleatoire <= 10) {
+            success = true;
+        }
+        
+        else{
+            success = false;
+        }
+
+    }
 }
+    // </editor-fold>
