@@ -1,8 +1,10 @@
 package jeugladiateurs;
 
-import personnages.Personnage;
+//import personnages.Personnage;
 import combat.CompteurDeTour;
 import combat.AffichageEcran;
+import personnages.Mirmillon;
+import personnages.Retiaire;
 
 public class JeuGladiateurs {
 
@@ -14,11 +16,18 @@ public class JeuGladiateurs {
     // <editor-fold defaultstate="collapsed" desc="Instanciation des objets">
     CompteurDeTour tour = new CompteurDeTour();
     AffichageEcran affichage = new AffichageEcran();
-    Personnage personnage1 = new Personnage();
-    Personnage personnage2 = new Personnage();
+    //Personnage personnage1 = new Personnage();
+    //Personnage personnage2 = new Personnage();
+    
+    Mirmillon personnage1 = new Mirmillon();
+    Retiaire personnage2 = new Retiaire();
     
     personnage1.Personnage("Bob le malchanceux", 70, 15, 15, 15);
     personnage2.Personnage("Igor l'empaleur", 100, 25, 5, 30);
+    
+    personnage1.Mirmillon();
+    personnage2.Retiaire();
+    
             
     // </editor-fold>
 
@@ -46,6 +55,13 @@ public class JeuGladiateurs {
             
             if (personnage1.getInitiative()== i) {
                 personnage1.frapperPersonnage(personnage2);
+                if (personnage2.getPointsDeVie() == 0) {
+                    System.out.println(personnage1.getNom() + " decapite son adversaire");
+                    i = 100;
+                }
+                else{
+                personnage1.frapperPersonnage(personnage2);
+                }
             }
             
             if (personnage2.getInitiative()== i) {

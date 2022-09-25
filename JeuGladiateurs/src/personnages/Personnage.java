@@ -13,15 +13,18 @@ public class Personnage {
     private int pointsDeVie;
     private int valeurMaxAttaque;
     private int valeurDefense;
-    private int initiative;
+    protected int initiative;
     private int attaque;
     private int dommages;
+    protected String classe;
+    protected int maxIni;
     // </editor-fold>
 
     // **************************************************************************
     // **************************************************************************
     // **************************************************************************
     // <editor-fold defaultstate="collapsed" desc="Constructeurs et initialisation">
+
     public void Personnage(String newName, int pvs, int attaqueMax, int defense, int ini) {
         // TODO : Constructeur AVEC paramètres
         nom = newName;
@@ -40,8 +43,11 @@ public class Personnage {
         initiative = 0;
         attaque = 0;
         dommages = 0;
+        classe = "";
+        maxIni = 0;
         
     }
+    
     // </editor-fold>
     
     // **************************************************************************
@@ -77,6 +83,16 @@ public class Personnage {
     public int getDommages() {
         return dommages;
     }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public int getMaxIni() {
+        return maxIni;
+    }
+    
+    
     
     // TODO : Les setters
 
@@ -107,6 +123,16 @@ public class Personnage {
     public void setDommages(int dommages) {
         this.dommages = dommages;
     }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+
+    public void setMaxIni(int maxIni) {
+        this.maxIni = maxIni;
+    }
+    
+    
     
     // </editor-fold>
 
@@ -134,6 +160,7 @@ public class Personnage {
         System.out.println("Points de vie : " + pointsDeVie);
         System.out.println("Initiative ? : " + initiative);
         System.out.println("Statut ? : " + statut);
+        System.out.println("Classe ? : " + classe);
     }
 
     private int attaqueCalcul() {
@@ -183,7 +210,7 @@ public class Personnage {
         
         Random rand = new Random();
         int minValue = 0;
-        int maxValue = 100 + 1;
+        int maxValue = maxIni + 1;
         int nombreAleatoire = rand.nextInt(maxValue - minValue) + minValue;
         
         setInitiative(nombreAleatoire);
