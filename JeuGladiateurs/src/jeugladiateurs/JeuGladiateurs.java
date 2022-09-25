@@ -76,7 +76,7 @@ public class JeuGladiateurs {
                     
                     if (personnage2.isSuccess() == true){
                         System.out.println();
-                        System.out.println("Son filet attrape " + personnage1.getNom() + " et il l empale sauvagement avec sa lance.");
+                        System.out.println("Son filet attrape " + personnage1.getNom() + " et il l'empale sauvagement avec sa lance.");
                         personnage1.setPointsDeVie(0);
                         i = 100;
                     }
