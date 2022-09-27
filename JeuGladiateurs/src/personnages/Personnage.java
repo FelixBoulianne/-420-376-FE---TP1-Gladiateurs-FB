@@ -9,7 +9,7 @@ public class Personnage {
     // **************************************************************************
     // <editor-fold defaultstate="collapsed" desc="Attributs">
     // TODO : Mettre vos attributs ici
-    private String nom;
+    protected String nom;
     private int pointsDeVie;
     private int valeurMaxAttaque;
     private int valeurDefense;
@@ -20,6 +20,7 @@ public class Personnage {
     protected int maxIni;
     protected boolean filet;
     protected boolean success;
+    
     // </editor-fold>
 
     // **************************************************************************
@@ -47,8 +48,6 @@ public class Personnage {
         dommages = 0;
         classe = "";
         maxIni = 0;
-        //filet = true;
-        //success = false;
     }
     
     // </editor-fold>
@@ -94,7 +93,7 @@ public class Personnage {
     public int getMaxIni() {
         return maxIni;
     }
-
+    
     public boolean isFilet() {
         return filet;
     }
@@ -102,8 +101,6 @@ public class Personnage {
     public boolean isSuccess() {
         return success;
     }
-    
-    
     
     // TODO : Les setters
 
@@ -142,7 +139,7 @@ public class Personnage {
     public void setMaxIni(int maxIni) {
         this.maxIni = maxIni;
     }
-
+    
     public void setFilet(boolean filet) {
         this.filet = filet;
     }
@@ -150,9 +147,6 @@ public class Personnage {
     public void setSuccess(boolean success) {
         this.success = success;
     }
-    
-    
-    
     
     // </editor-fold>
 
@@ -191,10 +185,8 @@ public class Personnage {
         int minValue = 0;
         int maxValue = valeurMaxAttaque + 1;
         int nombreAleatoire = rand.nextInt(maxValue - minValue) + minValue;
-        
-        setAttaque(nombreAleatoire);
        
-        return attaque;
+        return nombreAleatoire;
     }
 
     public void frapperPersonnage(Personnage personnageCible) {
@@ -216,7 +208,7 @@ public class Personnage {
             
         }
         
-        if (filet == false || classe == "Retiaire") {
+        if (filet == false || "Retiaire".equals(classe)) {
             System.out.println();
             System.out.println(nom + " ramasse son filet et en profite pour attaquer de : " + attaque);
             System.out.println(personnageCible.getNom() + " a une defense de: " + personnageCible.getValeurDefense());
@@ -247,21 +239,5 @@ public class Personnage {
         
     }
     
-    public void success(){
-        
-        Random rand = new Random();
-        int minValue = 0;
-        int maxValue = 100 + 1;
-        int nombreAleatoire = rand.nextInt(maxValue - minValue) + minValue;
-        
-        if (nombreAleatoire <= 10) {
-            success = true;
-        }
-        
-        else{
-            success = false;
-        }
-
-    }
 }
     // </editor-fold>

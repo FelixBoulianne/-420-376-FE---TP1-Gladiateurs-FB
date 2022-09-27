@@ -15,4 +15,11 @@ public class Mirmillon extends Personnage {
     maxIni = 30;
  }
     
+    
+    public void afficheDecapite(){
+    
+    System.out.println(nom + " decapite son adversaire.");
+        
+}
+    
 }

@@ -56,7 +56,7 @@ public class JeuGladiateurs {
             if (personnage1.getInitiative() == i) {
                 personnage1.frapperPersonnage(personnage2);
                 if (personnage2.getPointsDeVie() == 0) {
-                    System.out.println(personnage1.getNom() + " decapite son adversaire.");
+                    personnage1.afficheDecapite();
                     i = 100;
                 }
                 else{
@@ -69,22 +69,18 @@ public class JeuGladiateurs {
             
             if (personnage2.getInitiative() == i) {
                 if (personnage2.isFilet() == true) {
-                    System.out.println();
-                    System.out.println(personnage2.getNom() + " lance son filet.");
+                    
+                    personnage2.afficheLancerFilet();
                     
                     personnage2.success();
                     
                     if (personnage2.isSuccess() == true){
-                        System.out.println();
-                        System.out.println("Son filet attrape " + personnage1.getNom() + " et il l'empale sauvagement avec sa lance.");
-                        personnage1.setPointsDeVie(0);
+                        personnage2.afficheLancerReussi(personnage1);
                         i = 100;
                     }
                     
                     else{
-                        System.out.println();
-                        System.out.println("Le filet n'atteint pas sa cible.");
-                        personnage2.setFilet(false);
+                        personnage2.afficheLancerRate();
                     }
                     
                 }
