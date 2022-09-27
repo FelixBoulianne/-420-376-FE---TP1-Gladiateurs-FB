@@ -1,6 +1,5 @@
 package jeugladiateurs;
 
-//import personnages.Personnage;
 import combat.CompteurDeTour;
 import combat.AffichageEcran;
 import personnages.Mirmillon;
@@ -16,17 +15,10 @@ public class JeuGladiateurs {
     // <editor-fold defaultstate="collapsed" desc="Instanciation des objets">
     CompteurDeTour tour = new CompteurDeTour();
     AffichageEcran affichage = new AffichageEcran();
-    //Personnage personnage1 = new Personnage();
-    //Personnage personnage2 = new Personnage();
     
-    Mirmillon personnage1 = new Mirmillon();
-    Retiaire personnage2 = new Retiaire();
+    Mirmillon personnage1 = new Mirmillon("Bob le malchanceux", 70, 15, 15, 15);
+    Retiaire personnage2 = new Retiaire("Igor l'empaleur", 100, 25, 5, 30);
     
-    personnage1.Personnage("Bob le malchanceux", 70, 15, 15, 15);
-    personnage2.Personnage("Igor l'empaleur", 100, 25, 5, 30);
-    
-    personnage1.Mirmillon();
-    personnage2.Retiaire();
     
             
     // </editor-fold>
@@ -53,41 +45,13 @@ public class JeuGladiateurs {
     
         for (int i = 0; i <= 100; i++) {
             
-            if (personnage1.getInitiative() == i) {
+            if (personnage1.getInitiative() == i && personnage1.getPointsDeVie() > 0) {
                 personnage1.frapperPersonnage(personnage2);
-                if (personnage2.getPointsDeVie() == 0) {
-                    personnage1.afficheDecapite();
-                    i = 100;
                 }
-                else{
-                personnage1.frapperPersonnage(personnage2);
-                if (personnage2.getPointsDeVie() == 0) {
-                    i = 100;
-                }
-                }
-            }
+           
             
-            if (personnage2.getInitiative() == i) {
-                if (personnage2.isFilet() == true) {
-                    
-                    personnage2.afficheLancerFilet();
-                    
-                    personnage2.success();
-                    
-                    if (personnage2.isSuccess() == true){
-                        personnage2.afficheLancerReussi(personnage1);
-                        i = 100;
-                    }
-                    
-                    else{
-                        personnage2.afficheLancerRate();
-                    }
-                    
-                }
-                else{
-                    personnage2.frapperPersonnage(personnage1);
-                }
-                
+            if (personnage2.getInitiative() == i && personnage2.getPointsDeVie() > 0) {
+                personnage2.frapperPersonnage(personnage1);
             }
             
         }

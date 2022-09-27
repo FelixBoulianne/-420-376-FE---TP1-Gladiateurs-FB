@@ -10,16 +10,13 @@ public class Personnage {
     // <editor-fold defaultstate="collapsed" desc="Attributs">
     // TODO : Mettre vos attributs ici
     protected String nom;
-    private int pointsDeVie;
-    private int valeurMaxAttaque;
-    private int valeurDefense;
+    protected int pointsDeVie;
+    protected int valeurMaxAttaque;
+    protected int valeurDefense;
     protected int initiative;
-    private int attaque;
-    private int dommages;
-    protected String classe;
-    protected int maxIni;
-    protected boolean filet;
-    protected boolean success;
+    protected int attaque;
+    protected int dommages;
+
     
     // </editor-fold>
 
@@ -46,8 +43,6 @@ public class Personnage {
         initiative = 0;
         attaque = 0;
         dommages = 0;
-        classe = "";
-        maxIni = 0;
     }
     
     // </editor-fold>
@@ -85,22 +80,6 @@ public class Personnage {
     public int getDommages() {
         return dommages;
     }
-
-    public String getClasse() {
-        return classe;
-    }
-
-    public int getMaxIni() {
-        return maxIni;
-    }
-    
-    public boolean isFilet() {
-        return filet;
-    }
-
-    public boolean isSuccess() {
-        return success;
-    }
     
     // TODO : Les setters
 
@@ -132,22 +111,6 @@ public class Personnage {
         this.dommages = dommages;
     }
 
-    public void setClasse(String classe) {
-        this.classe = classe;
-    }
-
-    public void setMaxIni(int maxIni) {
-        this.maxIni = maxIni;
-    }
-    
-    public void setFilet(boolean filet) {
-        this.filet = filet;
-    }
-
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-    
     // </editor-fold>
 
     // **************************************************************************
@@ -174,7 +137,6 @@ public class Personnage {
         System.out.println("Points de vie : " + pointsDeVie);
         System.out.println("Initiative ? : " + initiative);
         System.out.println("Statut ? : " + statut);
-        System.out.println("Classe ? : " + classe);
     }
 
     private int attaqueCalcul() {
@@ -200,7 +162,7 @@ public class Personnage {
         
         dommages = dommages >= 0 ? dommages : 0;
         
-        personnageCible.setPointsDeVie(personnageCible.getPointsDeVie() - dommages);
+        personnageCible.setPointsDeVie(personnageCible.getPointsDeVie() - this.dommages);
         
         if (personnageCible.getPointsDeVie() <= 0) {
             
@@ -208,22 +170,14 @@ public class Personnage {
             
         }
         
-        if (filet == false || "Retiaire".equals(classe)) {
-            System.out.println();
-            System.out.println(nom + " ramasse son filet et en profite pour attaquer de : " + attaque);
-            System.out.println(personnageCible.getNom() + " a une defense de: " + personnageCible.getValeurDefense());
-            System.out.println("Les dommages sont donc de: " + dommages);
-            System.out.println();
-            filet = true;
-        }
-        
-        else{
             System.out.println();
             System.out.println(nom + " attaque avec une puissance de: " + attaque);
             System.out.println(personnageCible.getNom() + " a une defense de: " + personnageCible.getValeurDefense());
             System.out.println("Les dommages sont donc de: " + dommages);
             System.out.println();
-        }
+            
+
+            
         
     }
 
@@ -232,7 +186,7 @@ public class Personnage {
         
         Random rand = new Random();
         int minValue = 0;
-        int maxValue = maxIni + 1;
+        int maxValue = 100;
         int nombreAleatoire = rand.nextInt(maxValue - minValue) + minValue;
         
         setInitiative(nombreAleatoire);
