@@ -135,10 +135,11 @@ public class Personnage {
         System.out.println("Attaque : " + valeurMaxAttaque);
         System.out.println("Defense : " + valeurDefense);
         System.out.println("Points de vie : " + pointsDeVie);
-        System.out.println("Initiative ? : " + initiative);
-        System.out.println("Statut ? : " + statut);
+        System.out.println("Initiative : " + initiative);
+        System.out.println("Statut : " + statut);
     }
 
+    
     private int attaqueCalcul() {
         // TODO : Retourner la valeur de l'attaque du personnage.
         // Cette valeur est trouvée aléatoirement et doit se situer entre ZÉRO et valeurMaxAttaque.
@@ -150,6 +151,7 @@ public class Personnage {
        
         return nombreAleatoire;
     }
+    
 
     public void frapperPersonnage(Personnage personnageCible) {
         // TODO : Récupérer la valeur d'attaque pour ce tour, calculer les dégats,
@@ -174,12 +176,9 @@ public class Personnage {
             System.out.println(nom + " attaque avec une puissance de: " + attaque);
             System.out.println(personnageCible.getNom() + " a une defense de: " + personnageCible.getValeurDefense());
             System.out.println("Les dommages sont donc de: " + dommages);
-            System.out.println();
-            
-
-            
-        
+            System.out.println();    
     }
+    
 
     public void setNewInitiativeRandom() {
         // TODO : Modifier de façon aléatoire la valeur INI du personnage.
@@ -190,8 +189,6 @@ public class Personnage {
         int nombreAleatoire = rand.nextInt(maxValue - minValue) + minValue;
         
         setInitiative(nombreAleatoire);
-        
     }
-    
 }
     // </editor-fold>

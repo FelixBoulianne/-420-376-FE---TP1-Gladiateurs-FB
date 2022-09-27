@@ -14,7 +14,6 @@ public class Mirmillon extends Personnage {
     
     public String classe;
 
-    
     public Mirmillon(String newName, int pvs, int attaqueMax, int defense, int ini){
     this.nom = newName;
     this.pointsDeVie = pvs;
@@ -28,36 +27,34 @@ public class Mirmillon extends Personnage {
     @Override
     public void afficherInfosPersonnage(){
         super.afficherInfosPersonnage();
-        System.out.println("Classe ? : " + classe);
+        System.out.println("Classe : " + classe);
     }
     
+    
     @Override
-        public void setNewInitiativeRandom() {
-        // TODO : Modifier de façon aléatoire la valeur INI du personnage.
-        
+    public void setNewInitiativeRandom() {
         Random rand = new Random();
         int minValue = 0;
         int maxValue = 30;
         int nombreAleatoire = rand.nextInt(maxValue - minValue) + minValue;
         
         setInitiative(nombreAleatoire);
-        
     }
-    
+        
+        
     @Override
     public void frapperPersonnage(Personnage personnageCible){
         super.frapperPersonnage(personnageCible);
         
         if (personnageCible.getPointsDeVie() <= 0) {
-            System.out.println(nom + " decapite son adversaire.");
+            System.out.println(nom + " decapite son adversaire");
         }
         
         else{
                     System.out.println();
                     System.out.println(getNom() + " attaque une deuxieme fois " + personnageCible.getNom());
                     System.out.println();
-                    super.frapperPersonnage(personnageCible);
-                
+                    super.frapperPersonnage(personnageCible);    
     }
 }
 }         

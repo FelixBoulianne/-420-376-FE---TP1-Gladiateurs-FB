@@ -23,21 +23,19 @@ public class Retiaire extends Personnage {
     this.initiative = ini;
     this.classe = "Retiaire";
     this.filet = false;
-    
  }
+    
     
     @Override
     public void afficherInfosPersonnage(){
         super.afficherInfosPersonnage();
-        System.out.println("Classe ? : " + classe);
+        System.out.println("Classe : " + classe);
     }
     
     
     @Override
     public void frapperPersonnage(Personnage personnageCible){
-        
         if (filet) {
-
             filet = false;
             System.out.println(this.getNom() + " recupere son filet et en profite pour attaquer");
             super.frapperPersonnage(personnageCible);
@@ -45,24 +43,25 @@ public class Retiaire extends Personnage {
         
         else{
             filet = true;
+            
             System.out.println();
-            System.out.println(nom + " lance son filet.");
+            System.out.println(nom + " lance son filet");
+            
             Random rand = new Random();
             int minValue = 0;
             int maxValue = 100;
             int nombreAleatoire = rand.nextInt(maxValue - minValue) + minValue;
             
             if (nombreAleatoire <= 10) {
-                personnageCible.setPointsDeVie(0);
                 System.out.println();
-                System.out.println("Son filet attrape " + personnageCible.getNom() + " et il l'empale sauvagement avec sa lance.");
+                System.out.println("Son filet attrape " + personnageCible.getNom() + " et il l'empale sauvagement avec sa lance");
+                personnageCible.setPointsDeVie(0);
              }
         
             else{
                System.out.println();
-               System.out.println("Le filet n'atteint pas sa cible.");
+               System.out.println("Le filet n'atteint pas sa cible");
             }
         }
-                
     }
 }
